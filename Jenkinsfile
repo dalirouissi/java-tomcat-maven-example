@@ -17,5 +17,10 @@ pipeline {
 
             }
         }
+        stage ('DEPLOY'){
+            steps{
+               echo 'DEPLOY ARTIFACT TEST CASE ...'     
+            }
+        }
     }
 }
