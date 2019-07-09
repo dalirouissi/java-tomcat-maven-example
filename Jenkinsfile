@@ -23,7 +23,7 @@ pipeline {
         stage('Deploy to Production'){
             steps{
                 timeout(time: 5, unit: 'DAYS') {
-                    input message: 'Approve Production environnement ?', submitter: 'medali.rouissi@gmail.com'
+                    input message: 'Approve Production environnement ?'
                 }
 
                 build job: 'Deploy-Production-Pipeline'
