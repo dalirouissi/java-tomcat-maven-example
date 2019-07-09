@@ -18,6 +18,25 @@ pipeline {
             steps{
                build job :'Deploy-stagingArea-Pipeline'     
             }
-        }    
+        }
+
+        stage('Deploy to Production'){
+            steps{
+                timeout(time: 5, unit: 'Days') {
+                    input message: 'Approve Production environnement ?', submitter: medali.rouissi@gmail.com
+                }
+
+                build job: 'Deploy-Production-Pipeline'
+            }
+            post{
+                success{
+                    echo 'Deployment on Production is Successful'
+                }
+
+                failure{
+                    echo 'Deployment on Production failure'
+                }
+            }
+        }
     }
 }
